@@ -1,15 +1,14 @@
 package com.dns.validator;
 
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.ConstraintViolationException;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
+import jakarta.validation.*;
 
 import java.util.Set;
 
 public interface SelfValidation {
 
-    static final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+    /* NOTE: ValidatorFactory should be closed when the VM is shutting down (see App.java) */
+    static final ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+    static final Validator validator = validatorFactory.getValidator();
 
 
     default void validate() {
