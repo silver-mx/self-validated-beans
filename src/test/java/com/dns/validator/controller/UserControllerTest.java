@@ -37,10 +37,10 @@ class UserControllerTest {
         webTestClient.post()
                 .uri("/v1/test/user-pojo")
                 .contentType(APPLICATION_JSON)
-                .bodyValue("{ \"username\": \"user\", \"password\": \"pass\" }")
+                .bodyValue("{ \"username\": \"user\", \"password\": \"password123\" }")
                 .exchange()
                 .expectStatus().isBadRequest()
                 .expectBody()
-                .json("{\"status\":400,\"message\":\"username: size must be between 8 and 20, password: size must be between 8 and 30\"}", true);
+                .json("{\"status\":400,\"message\":\"username: size must be between 8 and 20\"}", true);
     }
 }
