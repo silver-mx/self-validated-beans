@@ -2,10 +2,18 @@ package com.dns.validator;
 
 public class App {
 
-
     public static void main(String[] args) {
-        var userBuilder = UserBuilder.builder().username("username123").password("password123").build();
-        var userRecord = new UserRecord("username123", "password123");
+
+        try {
+            UserBuilder.builder().username("user").password("password123").build();
+        } catch (Exception e) {
+            System.out.println("Exception 1=" + e.getMessage());
+        }
+        try {
+            new UserRecord("username123", "pass");
+        } catch (Exception e) {
+            System.out.println("Exception 2=" + e.getMessage());
+        }
 
         Runtime.getRuntime().addShutdownHook(createShutdownHookThread());
     }
@@ -16,6 +24,8 @@ public class App {
      */
     private static Thread createShutdownHookThread() {
         return new Thread(() -> {
+
+            System.out.println("\n\n********************** CLOSE RESOURCES");
             System.out.println("Application shutting down, closing validationFactory = " + SelfValidation.validatorFactory);
 
             SelfValidation.validatorFactory.close();

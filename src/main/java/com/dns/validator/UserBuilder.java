@@ -3,7 +3,9 @@ package com.dns.validator;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
+import lombok.Value;
 
+@Value
 @Builder(builderClassName = "Builder")
 public class UserBuilder implements SelfValidation {
 
