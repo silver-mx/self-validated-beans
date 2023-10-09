@@ -1,23 +1,15 @@
 package com.dns.validator;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class App {
 
     public static void main(String[] args) {
-
-        try {
-            UserBuilder.builder().username("user").password("password123").build();
-        } catch (Exception e) {
-            System.out.println("Exception 1=" + e.getMessage());
-        }
-        try {
-            new UserRecord("username123", "pass");
-        } catch (Exception e) {
-            System.out.println("Exception 2=" + e.getMessage());
-        }
-
+        SpringApplication.run(App.class, args);
         Runtime.getRuntime().addShutdownHook(createShutdownHookThread());
     }
-
 
     /**
      * Create a shutdown hook thread that will close the validationFactory.
