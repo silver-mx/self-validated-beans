@@ -1,5 +1,6 @@
 package com.dns.validator;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -9,11 +10,15 @@ public record UserRecord(
         String username,
         @NotNull
         @Size(min = 8, max = 30)
-        String password) implements SelfValidation {
+        String password,
+        @NotNull
+        @Email
+        String email) implements SelfValidation {
 
-    public UserRecord(String username, String password) {
+    public UserRecord(final String username, final String password, final String email) {
         this.username = username;
         this.password = password;
+        this.email = email;
         validate();
     }
 }

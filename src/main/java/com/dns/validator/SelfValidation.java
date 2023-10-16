@@ -4,6 +4,10 @@ import jakarta.validation.*;
 
 import java.util.Set;
 
+/**
+ * This interface allows a bean to exercise all the jakarta validations defined. All beans need to implement this interface,
+ * and call validate() in order to be validated.
+ */
 public interface SelfValidation {
 
     /* NOTE: ValidatorFactory should be closed when the VM is shutting down (see App.java) */
@@ -18,6 +22,4 @@ public interface SelfValidation {
             throw new ConstraintViolationException(violations);
         }
     }
-
-
 }

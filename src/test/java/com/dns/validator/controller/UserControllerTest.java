@@ -43,4 +43,26 @@ class UserControllerTest {
                 .expectBody()
                 .json("{\"status\":400,\"message\":\"username: size must be between 8 and 20\"}", true);
     }
+
+    @Test
+    void createUserRecordSuccess() {
+        webTestClient.post()
+                .uri("/v1/test/user-record")
+                .contentType(APPLICATION_JSON)
+                .bodyValue("{ \"username\": \"username123\", \"password\": \"password123\", \"email\": \"user@email.com\" }")
+                .exchange()
+                .expectStatus().isOk();
+    }
+
+    @Test
+    void createUserRecordFailsWithValidationError() {
+        webTestClient.post()
+                .uri("/v1/test/user-record")
+                .contentType(APPLICATION_JSON)
+                .bodyValue("{ \"username\": \"user\", \"password\": \"password123\", \"email\": \"user@email.com\" }")
+                .exchange()
+                .expectStatus().isBadRequest()
+                .expectBody()
+                .json("{\"status\":400,\"message\":\"username: size must be between 8 and 20\"}", true);
+    }
 }

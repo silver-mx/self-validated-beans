@@ -26,6 +26,4 @@ public class UserPojo implements SelfValidation {
             return user;
         }
     }
-
-
 }
