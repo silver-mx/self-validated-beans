@@ -8,7 +8,7 @@ import java.util.Set;
  * This interface allows a bean to exercise all the jakarta validations defined. All beans need to implement this interface,
  * and call validate() in order to be validated.
  */
-public interface SelfValidation {
+public interface SelfValidated {
 
     /* NOTE: ValidatorFactory should be closed when the VM is shutting down (see App.java) */
     static final ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
@@ -16,7 +16,7 @@ public interface SelfValidation {
 
 
     default void validate() {
-        Set<ConstraintViolation<SelfValidation>> violations = validator.validate(this);
+        Set<ConstraintViolation<SelfValidated>> violations = validator.validate(this);
 
         if (!violations.isEmpty()) {
             throw new ConstraintViolationException(violations);

@@ -9,7 +9,7 @@ import lombok.Value;
 @Value
 @Builder(builderClassName = "Builder", setterPrefix = "with")
 @JsonDeserialize(builder = UserPojo.Builder.class)
-public class UserPojo implements SelfValidation {
+public class UserPojo implements SelfValidated {
 
     @NotNull
     @Size(min = 8, max = 20)

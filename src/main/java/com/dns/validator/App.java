@@ -18,13 +18,13 @@ public class App {
         return new Thread(() -> {
 
             System.out.println("\n\n********************** CLOSE RESOURCES");
-            System.out.println("Application shutting down, closing validationFactory = " + SelfValidation.validatorFactory);
+            System.out.println("Application shutting down, closing validationFactory = " + SelfValidated.validatorFactory);
 
-            SelfValidation.validatorFactory.close();
+            SelfValidated.validatorFactory.close();
 
             System.out.println("validationFactory closed successfully...");
-            System.out.println("Hibernate validatorFactory = " + SelfValidation.validatorFactory);
-            System.out.println("Hibernate validator = " + SelfValidation.validator);
+            System.out.println("Hibernate validatorFactory = " + SelfValidated.validatorFactory);
+            System.out.println("Hibernate validator = " + SelfValidated.validator);
 
         });
     }

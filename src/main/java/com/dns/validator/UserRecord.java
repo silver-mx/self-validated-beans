@@ -13,7 +13,7 @@ public record UserRecord(
         String password,
         @NotNull
         @Email
-        String email) implements SelfValidation {
+        String email) implements SelfValidated {
 
     public UserRecord(final String username, final String password, final String email) {
         this.username = username;
