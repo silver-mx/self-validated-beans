@@ -18,12 +18,9 @@ public class UserPojo implements SelfValidated {
     @Size(min = 8, max = 30)
     String password;
 
-    public static class Builder {
-        public UserPojo build() {
-            var user = new UserPojo(this.username, this.password);
-            user.validate();
-
-            return user;
-        }
+    private UserPojo(String username, String password) {
+        this.username = username;
+        this.password = password;
+        validate();
     }
 }
